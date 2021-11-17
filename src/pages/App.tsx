@@ -18,6 +18,7 @@ import { useModalOpen, useToggleModal } from '../state/application/hooks'
 import AddLiquidity from './AddLiquidity'
 import AddressClaimModal from '../components/claim/AddressClaimModal'
 import { ApplicationModal } from '../state/application/actions'
+import Claim from './Claim'
 import DarkModeQueryParamReader from '../theme/DarkModeQueryParamReader'
 import GraphQLProvider from './../graphql'
 import Guides from './Guides'
@@ -99,17 +100,18 @@ export default function App() {
 
           <BodyWrapper>
             <URLWarning />
-            <HeaderWrapper>
+            {/* <HeaderWrapper>
               <Header />
-            </HeaderWrapper>
+            </HeaderWrapper> */}
             <Popups />
             <Polling />
             <TopLevelModals />
             <Web3ReactManager>
               <Switch>
-                <Route exact strict path="/home" component={Home} />
-                <Route exact strict path="/swap" component={Swap} />
-                <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
+                {/* <Route exact strict path="/home" component={Home} />
+                <Route exact strict path="/swap" component={Swap} /> */}
+                <Route exact strict path="/claim" component={Claim} />
+                {/* <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} /> */}
                 <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
                 <Route exact strict path="/send" component={RedirectPathToSwapOnly} />
                 <Route exact strict path="/find" component={PoolFinder} />

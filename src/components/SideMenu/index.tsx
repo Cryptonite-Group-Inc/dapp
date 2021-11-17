@@ -115,7 +115,7 @@ export default function SideMenu() {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const [open, setOpen] = useState<boolean>(false)
 
-  history.listen((location) => setPathname(location.pathname))
+  history.listen(location => setPathname(location.pathname))
   const toggleOpen = () => {
     setOpen(!open)
   }
@@ -143,7 +143,13 @@ export default function SideMenu() {
             </IconLink>
             <span className={pathname === '/swap' ? 'active' : ''}>{t('Swap')}</span>
           </StyledNavLink>
-          <StyledNavLink id={`transfer-nav-link`} to={'/#'} onClick={handleSideMenuOpen}>
+          <StyledNavLink id={`claim-nav-link`} to={'/claim'} onClick={handleSideMenuOpen}>
+            <IconLink>
+              <Icon icon="earn" active={pathname === '/claim'} />
+            </IconLink>
+            <span className={pathname === '/claim' ? 'active' : ''}>{t('Claim')}</span>
+          </StyledNavLink>
+          {/* <StyledNavLink id={`transfer-nav-link`} to={'/#'} onClick={handleSideMenuOpen}>
             <IconLink>
               <Icon icon="bridges" active={pathname === '/transfer'} />
             </IconLink>
@@ -166,7 +172,7 @@ export default function SideMenu() {
               <Icon icon="planet" active={pathname.includes('zero-gravity')} />
             </IconLink>
             <span className={pathname.includes('zero-gravity') ? 'active' : ''}>{t('Zero Gravity')}</span>
-          </StyledNavLink>
+          </StyledNavLink> */}
           {/* <StyledNavLink id={`staking-nav-link`} to={'/staking'} onClick={hanldeSidemenuOpen}>
             <IconLink>
               <Icon icon="market" active={pathname === '/staking'} />
@@ -174,7 +180,7 @@ export default function SideMenu() {
 
             <span className={pathname === '/staking' ? 'active' : ''}>{t('Staking')}</span>
           </StyledNavLink> */}
-          <HeaderExternalLink href={`https://buy.0.exchange`} style={{ marginTop: '3rem' }}>
+          {/* <HeaderExternalLink href={`https://buy.0.exchange`} style={{ marginTop: '3rem' }}>
             <IconLink>
               <DollarSign size={20} />
             </IconLink>
@@ -185,7 +191,7 @@ export default function SideMenu() {
               <Icon icon="more" />
             </IconLink>
             {t('More ...')}
-          </MoreLink>
+          </MoreLink> */}
         </HeaderLinks>
       </SideMenuWrapper>
     </>

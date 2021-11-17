@@ -8,7 +8,7 @@ const BubbleWrap = styled.div`
   position: relative;
   flex: 1;
   height: auto;
-  width: 272px;
+  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,7 +21,7 @@ ${({ theme }) => theme.mediaWidth.upToSmall`
 `
 const BubbleInnerWrap = styled.div`
   position: relative;
-  padding: 45px;
+  padding: 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,18 +39,19 @@ const BubbleInnerWrap = styled.div`
 const Title = styled.div<{ color: string }>`
   font-weight: 500;
   font-size: 17px;
+  text-transform: uppercase;
   color: ${({ color }) => color};
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-  font-size: 12px;
-`};
+    font-size: 12px;
+  `};
 `
 const Flex = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-bottom: 30px;
   ${({ theme }) => theme.mediaWidth.upToMedium`
-  justify-content:center;
-`};
+    justify-content:center;
+  `};
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
   margin-top: 15px;
 `};
@@ -100,7 +101,6 @@ export default function Bubble({ variant, color, title, icon, children, prefix, 
     <BubbleWrap>
       <Background variant={variant} showMountains={showMountains} />
       <BubbleInnerWrap>
-        <Title color={color}>{title}</Title>
         <Flex>
           {icon && <Icon icon={icon} color={color} />}
           <FlexAmount>
@@ -109,6 +109,7 @@ export default function Bubble({ variant, color, title, icon, children, prefix, 
             {suffix && <TextPrefix>{suffix}</TextPrefix>}
           </FlexAmount>
         </Flex>
+        <Title color={color}>{title}</Title>
       </BubbleInnerWrap>
     </BubbleWrap>
   )

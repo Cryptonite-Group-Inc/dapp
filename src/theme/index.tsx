@@ -241,13 +241,13 @@ body {
 `
 
 export const Title = styled.h1`
-width: 100%;
-padding: 0px 64px;
-${({ theme }) => theme.mediaWidth.upToMedium`
-padding: 0;
-text-align: center;
-font-size: 49px;
-margin-top: 10px;
-margin-bottom: 0px;
-`};
+  width: 100%;
+  padding: 50px 64px;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    padding: 0;
+    text-align: center;
+    font-size: 49px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+  `};
 `
