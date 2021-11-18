@@ -17,7 +17,7 @@ const SideMenuWrapper = styled.div<{ open?: boolean }>`
   width: 260px;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.75);
   justify-content: center;
 
   ${({ theme }) => theme.mediaWidth.upToMedium<{ open?: boolean }>`

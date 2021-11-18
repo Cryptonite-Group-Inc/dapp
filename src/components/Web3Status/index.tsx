@@ -63,12 +63,12 @@ const Web3StatusGeneric = styled(ButtonSecondary)`
 //   }
 // `
 
-const Web3StatusConnect = styled(Web3StatusGeneric) <{ faded?: boolean }>`
+const Web3StatusConnect = styled(Web3StatusGeneric)<{ faded?: boolean }>`
   background-color: ${({ theme }) => theme.primary4};
   border: none;
   color: ${({ theme }) => theme.primaryText1};
   font-weight: 500;
-  transition: all .2s ease-in-out;
+  transition: all 0.2s ease-in-out;
   :hover,
   :focus {
     border: 1px solid ${({ theme }) => theme.primary1} !important;
@@ -78,8 +78,8 @@ const Web3StatusConnect = styled(Web3StatusGeneric) <{ faded?: boolean }>`
   ${({ faded }) =>
     faded &&
     css`
-      background: rgba(103, 82, 247, 0.18);
-      border: 1px solid #6752F7;
+      background: #865b54;
+      border: 1px solid #6752f7;
       box-sizing: border-box;
       backdrop-filter: blur(7px);
       border-radius: 54px;
@@ -104,7 +104,7 @@ const Web3StatusConnected = styled.div`
   font-size: 13px;
   line-height: 19px;
   letter-spacing: 0.05em;
-  color: #a7b1f4;
+  color: #604d34;
   opacity: 0.56;
   font-weight: 500;
 `
@@ -186,9 +186,7 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
 }
 
 function Web3StatusInner() {
-  const {
-    availableChains: allChains,
-  } = useCrosschainState()
+  const { availableChains: allChains } = useCrosschainState()
   const dispatch = useDispatch<AppDispatch>()
   const { t } = useTranslation()
   const { account, connector, error } = useWeb3React()
@@ -266,7 +264,7 @@ function Web3StatusInner() {
           <HeaderRowBetween>
             <Text>{pending?.length} Pending</Text>
             <LoaderWrap>
-            <Loader stroke="#6752F7" />
+              <Loader stroke="#6752F7" />
             </LoaderWrap>
           </HeaderRowBetween>
         ) : (

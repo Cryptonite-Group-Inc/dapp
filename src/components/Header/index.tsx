@@ -267,7 +267,7 @@ const Header = () => {
       <HideMedium>
         <LogoContainer>
           {/* <img src={ZeroLogo} alt="Zero logotype" /> */}
-          <h1>Mishka</h1>
+          <h1 style={{ color: '#916461' }}>Mishka</h1>
         </LogoContainer>
       </HideMedium>
       {account && userEthBalance ? (

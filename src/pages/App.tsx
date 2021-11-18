@@ -100,9 +100,9 @@ export default function App() {
 
           <BodyWrapper>
             <URLWarning />
-            {/* <HeaderWrapper>
+            <HeaderWrapper>
               <Header />
-            </HeaderWrapper> */}
+            </HeaderWrapper>
             <Popups />
             <Polling />
             <TopLevelModals />

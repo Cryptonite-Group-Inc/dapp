@@ -22,7 +22,7 @@ const BubbleMarginWrap = styled.div`
   `};
 `
 const Flex = styled.div<{ isColumn: boolean }>`
-  margin: 20px auto 0;
+  margin: 50px auto 0;
   display: flex;
   justify-content: ${({ isColumn }) => (isColumn ? 'center' : 'space-between')};
   flex-wrap: wrap;
@@ -103,7 +103,7 @@ export default function Claim() {
           <BubbleMarginWrap>
             <Bubble
               variant="purple"
-              color="#A7B1F4"
+              color="#FFFFFF"
               prefix="$"
               suffix={fnum(tokenBalances)?.suffix}
               title="Mishka tokens to claim"

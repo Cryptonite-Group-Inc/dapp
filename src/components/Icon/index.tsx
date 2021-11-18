@@ -17,7 +17,7 @@ const Icon = ({ icon, active = false, color  }: IconProps) => {
   return (
     <StyledSpan>
       <svg width="21" height="21" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <IconPath color={color ? color : active ? 'white' : '#A7B1F4'} />
+        <IconPath color={color ? color : active ? 'white' : '#efc184'} />
       </svg>
     </StyledSpan>
   )

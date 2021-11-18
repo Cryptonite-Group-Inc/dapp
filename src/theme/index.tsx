@@ -42,7 +42,7 @@ export function colors(darkMode: boolean): Colors {
 
     // text
     text1: darkMode ? '#FFFFFF' : '#000000',
-    text2: darkMode ? '#A7B1F4' : '#C3C5CB',
+    text2: darkMode ? '#efc184' : '#C3C5CB',
     text3: darkMode ? '#6C7284' : '#888D9B',
     text4: darkMode ? '#565A69' : '#C3C5CB',
     text5: darkMode ? '#2C2F36' : '#EDEEF2',
@@ -59,7 +59,7 @@ export function colors(darkMode: boolean): Colors {
     advancedBG: darkMode ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.6)',
 
     //primary colors
-    primary1: darkMode ? '#6752F7' : '#ff007a',
+    primary1: darkMode ? '#865B54' : '#ff007a',
     primary2: darkMode ? '#6752F7' : '#FF8CC3',
     primary3: darkMode ? '#1CB0F9' : '#FF99C9',
     primary4: darkMode ? '#376bad70' : '#F6DDE8',
@@ -235,14 +235,14 @@ html {
 
 body {
   min-height: 100vh;
-  background: #2C3168;
-  background: linear-gradient(116.27deg, #2C3168 6.4%, #0E1130 100%);
+  background: linear-gradient(116.27deg, rgb(239, 193, 132) 64%, rgb(239, 193, 132) 100%)
 }
 `
 
 export const Title = styled.h1`
+  color: #916461;
   width: 100%;
-  padding: 50px 64px;
+  padding: 0 64px;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 0;
     text-align: center;

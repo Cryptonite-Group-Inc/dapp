@@ -13,11 +13,11 @@ const BubbleWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   ${({ theme }) => theme.mediaWidth.upToMedium`
-  width: 100%;
-`};
-${({ theme }) => theme.mediaWidth.upToSmall`
-  margin: 0.2rem 0.4rem;
-`};
+    width: 100%;
+  `};
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    margin: 0.2rem 0.4rem;
+  `};
 `
 const BubbleInnerWrap = styled.div`
   position: relative;
@@ -93,7 +93,7 @@ export interface BubbleProps {
   children?: ReactNode
   prefix?: string
   suffix?: string
-  showMountains?: boolean;
+  showMountains?: boolean
 }
 
 export default function Bubble({ variant, color, title, icon, children, prefix, suffix, showMountains }: BubbleProps) {
