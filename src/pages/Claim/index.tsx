@@ -6,6 +6,7 @@ import Bubble from '../../components/Bubble'
 import PageContainer from '../../components/PageContainer'
 import styled from 'styled-components'
 
+import { useActiveWeb3React } from '../../hooks'
 import useWindowDimensions from '../../hooks/useWindowDimensions'
 import { Title } from '../../theme'
 
@@ -78,16 +79,17 @@ function fnum(x: number) {
 }
 
 export default function Claim() {
-  const [tokenBalances, setTokenBalances] = useState<number>(26285647.16)
+  const [tokenBalances, setTokenBalances] = useState<number>(0)
 
+  const { account } = useActiveWeb3React()
   const { width } = useWindowDimensions()
   const isColumn = width < 2000
 
   const getTokenBalances1 = async () => {
-    const res = await getTokenBalances()
-    console.log('res ', res)
+    const res = await getTokenBalances(account)
     if (!res.hasError) {
-      setTokenBalances(res.data)
+      const amount = res.payload?.records?.find((record: any) => record.symbol === 'MISHKA').amount
+      setTokenBalances(parseFloat(amount))
     }
   }
 
@@ -104,12 +106,12 @@ export default function Claim() {
             <Bubble
               variant="purple"
               color="#FFFFFF"
-              prefix="$"
+              prefix=""
               suffix={fnum(tokenBalances)?.suffix}
               title="Mishka tokens to claim"
               showMountains={true}
             >
-              {fnum(tokenBalances)?.value?.toFixed(3)}
+              {fnum(tokenBalances)?.value}
             </Bubble>
           </BubbleMarginWrap>
         </Flex>
