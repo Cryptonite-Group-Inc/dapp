@@ -25,6 +25,9 @@ const BubbleInnerWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
+  background-color: #2f357352;
+  border-radius: 20px;
   ${({ theme }) => theme.mediaWidth.upToMedium`
   padding: 45px 60px;
   text-align: center;
@@ -48,7 +51,8 @@ const Title = styled.div<{ color: string }>`
 const Flex = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 30px;
+  justify-content: center;
+  margin-bottom: 20px;
   ${({ theme }) => theme.mediaWidth.upToMedium`
     justify-content:center;
   `};
@@ -99,7 +103,7 @@ export interface BubbleProps {
 export default function Bubble({ variant, color, title, icon, children, prefix, suffix, showMountains }: BubbleProps) {
   return (
     <BubbleWrap>
-      <Background variant={variant} showMountains={showMountains} />
+      {/* <Background variant={variant} showMountains={showMountains} /> */}
       <BubbleInnerWrap>
         <Flex>
           {icon && <Icon icon={icon} color={color} />}
