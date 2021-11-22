@@ -317,7 +317,7 @@ export default function CurrencyInputPanel({
   const hasABalance = !!(selectedCurrencyBalance && parseFloat(selectedCurrencyBalance.toSignificant(6)) > 1 / 10e18)
 
   // hack to fix AWAX
-  let altCurrency = currency
+  const altCurrency = currency
   if (altCurrency?.symbol.includes('AWAX')) {
     altCurrency.symbol = altCurrency.symbol.replace('AWAX', 'AVAX')
   }
@@ -325,7 +325,7 @@ export default function CurrencyInputPanel({
   return (
     <>
       <InputPanel id={id} transferPage={transferPage}>
-        <Container hideInput={hideInput} className={ grayedOut ? 'grayed-out' : ''}>
+        <Container hideInput={hideInput} className={grayedOut ? 'grayed-out' : ''}>
           {!hideInput && (
             <LabelRow style={{ marginBottom: '1rem' }}>
               <RowBetweenTransfer>
@@ -340,8 +340,7 @@ export default function CurrencyInputPanel({
                   >
                     {!hideBalance && !!altCurrency && selectedCurrencyBalance && hasABalance
                       ? (customBalanceText ?? 'Balance: ') +
-                        `${selectedCurrencyBalance
-                          ?.toSignificant(returnBalanceNum(selectedCurrencyBalance, 6), {
+                        `${selectedCurrencyBalance?.toSignificant(returnBalanceNum(selectedCurrencyBalance, 6), {
                           groupSeparator: ','
                         })}`
                       : ''}
@@ -350,7 +349,10 @@ export default function CurrencyInputPanel({
               </RowBetweenTransfer>
             </LabelRow>
           )}
-          <InputRow style={hideInput ? { padding: '0', borderRadius: '8px', marginTop: '0' } : {}} selected={disableCurrencySelect}>
+          <InputRow
+            style={hideInput ? { padding: '0', borderRadius: '8px', marginTop: '0' } : {}}
+            selected={disableCurrencySelect}
+          >
             {!hideInput && (
               <>
                 <NumericalInput
@@ -371,7 +373,7 @@ export default function CurrencyInputPanel({
               <CurrencySelect
                 style={{ opacity: `${isCrossChain && label === 'To' && !altCurrency?.symbol ? '0' : '1'}` }}
                 selected={!!altCurrency}
-                className={`open-currency-select-button ${ hideInput ? 'centered' : ''}`}
+                className={`open-currency-select-button ${hideInput ? 'centered' : ''}`}
                 onClick={() => {
                   if (!disableCurrencySelect) {
                     setModalOpen(true)
@@ -399,10 +401,11 @@ export default function CurrencyInputPanel({
                             ? altCurrency.symbol.slice(0, 4) +
                               '...' +
                               altCurrency.symbol.slice(altCurrency.symbol.length - 5, altCurrency.symbol.length)
-                            : altCurrency?.symbol) ||
+                            : altCurrency?.symbol) || (
                             <StyledTokenNameDeafult>
-                              { !disableCurrencySelect ? t('selectToken') : ''}
-                            </StyledTokenNameDeafult>}
+                              {!disableCurrencySelect ? t('selectToken') : ''}
+                            </StyledTokenNameDeafult>
+                          )}
                     </StyledTokenName>
                   )}
                   {!disableCurrencySelect && !disableBlockchainSelect && <StyledDropDown selected={!!altCurrency} />}

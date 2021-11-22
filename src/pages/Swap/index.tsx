@@ -6,7 +6,12 @@ import { CHAIN_LABELS, NATIVE_CURRENCY } from '../../constants'
 import Card, { GreyCard } from '../../components/Card'
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Trade } from '@zeroexchange/sdk'
 import Column, { AutoColumn } from '../../components/Column'
-import { GetTokenByAddrAndChainId, useCrossChain, useCrosschainHooks, useCrosschainState } from '../../state/crosschain/hooks'
+import {
+  GetTokenByAddrAndChainId,
+  useCrossChain,
+  useCrosschainHooks,
+  useCrosschainState
+} from '../../state/crosschain/hooks'
 import { LinkStyledButton, TYPE, Title } from '../../theme'
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { STAKING_REWARDS_INFO, useStakingInfo } from '../../state/stake/hooks'
@@ -80,8 +85,8 @@ const CrossChainLabels = styled.div`
 const SwapOuterWrap = styled.div`
   width: 100%;
   ${({ theme }) => theme.mediaWidth.upToSmall`
-padding: 0;
-`};
+    padding: 0;
+  `};
 `
 
 const SubTitle = styled.h2`
@@ -114,6 +119,7 @@ const SwapWrap = styled.div`
   `};
   position: sticky;
   top: 4rem;
+  margin: 0 auto;
 `
 const SwapFlex = styled.div`
   display: flex;
@@ -226,9 +232,7 @@ const Header = styled.div`
   margin-bottom: 1rem;
 `
 
-export default function Swap({
-  ...props
-}: RouteComponentProps<{ currencyIdA: string; currencyIdB: string }>) {
+export default function Swap({ ...props }: RouteComponentProps<{ currencyIdA: string; currencyIdB: string }>) {
   useCrossChain()
 
   const loadedUrlParams = useDefaultsFromURLSearch()
@@ -239,7 +243,7 @@ export default function Swap({
     currentChain,
     currentToken,
     crosschainFee,
-    targetTokens,
+    targetTokens
   } = useCrosschainState()
 
   const { width } = useWindowDimensions()
@@ -489,7 +493,6 @@ export default function Swap({
     }
   }, [token0, token1, curA, curB])
 
-
   // swaps or cross chain
   const [isCrossChain, setIsCrossChain] = useState<boolean>(false)
 
@@ -524,7 +527,7 @@ export default function Swap({
     // use set to avoid duplicates
     // reset array to [] each time
     const arr: any = new Set()
-    for (let st of stakedPools) {
+    for (const st of stakedPools) {
       arr.add(st?.tokens[0])
       arr.add(st?.tokens[1])
     }
@@ -558,20 +561,20 @@ export default function Swap({
       })
       .concat(userTokens, stakedTokens)
 
-      const filteredArray: any = [];
-      arr.forEach((item: any) => {
-        const i = filteredArray.findIndex((x: any) => x.address == item.address);
-        if(i <= -1){
-          filteredArray.push(item);
-        }
-      })
+    const filteredArray: any = []
+    arr.forEach((item: any) => {
+      const i = filteredArray.findIndex((x: any) => x.address == item.address)
+      if (i <= -1) {
+        filteredArray.push(item)
+      }
+    })
 
     return [...new Set(filteredArray)]
   }, [availableTokens, userTokens])
 
   return (
     <>
-      <Title>Trade</Title>
+      <Title>Swap</Title>
       <PageContainer>
         <SwapOuterWrap>
           <TokenWarningModal
